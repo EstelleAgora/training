@@ -1,3 +1,9 @@
+# Project for Vue and nuxt 3 training using Pinia and Prime vue modules
+
+Prime vue: https://primevue.org/
+Pinia : https://pinia.vuejs.org/
+
+
 # Nuxt 3 Minimal Starter
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
