@@ -14,7 +14,13 @@
       <label for="description">Description:</label>
       <Textarea v-model="film.description" rows="5" cols="30" />
       
-     
+      <label for="director">Status de production:</label>
+      <Dropdown
+        v-model="film.status"
+        :options="status"            
+        placeholder="Select a status"
+        class="w-full md:w-14rem"
+      />    
       
       <Button type="submit">Submit</button>
     </form>
@@ -29,7 +35,7 @@ import Calendar from 'primevue/calendar'
 import { useMoviesStore } from '~/stores/movies'
 import {useRoute} from "vue-router";
 import { storeToRefs } from 'pinia';
-
+import { ref } from 'vue'
     const store = useMoviesStore();
     const route = useRoute();
 
@@ -39,9 +45,14 @@ import { storeToRefs } from 'pinia';
     //Ask question
     const film = getMovieById.value(route.params._id);
  
-   
+    const status = ref([
+  'In production',
+ 'Released',
+  'Postponed',
+   'Cancelled'
+])
     const submitForm = () => {   
-      store.updateMovie(route.params._id, { ...film }); 
+      store.updateMovie(route.params._id,  {name: film.name, director: film.director, description: film.description, date: film.date, status: film.status} ); 
       // eslint-disable-next-line no-undef
       navigateTo('/');
     };

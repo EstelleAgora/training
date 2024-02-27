@@ -17,8 +17,7 @@
       <label for="director">Status de production:</label>
       <Dropdown
         v-model="film.status"
-        :options="status"
-        optionLabel="name"            
+        :options="status"     
         placeholder="Select a status"
         class="w-full md:w-14rem"
       />    
@@ -46,11 +45,11 @@ const film = ref({
 const store = useMoviesStore()
 
 const status = ref([
-  { name: 'In production', severity: 'warn', value:0 },
-  { name: 'Released', severity: 'success', value:1 },
-  { name: 'Postponed', severity: 'danger', value:2 } 
+  'In production',
+ 'Released',
+  'Postponed',
+   'Cancelled'
 ])
-
 
 // const countries = ref([
 //   { name: 'Australia', code: 'AU' },
@@ -66,7 +65,7 @@ const status = ref([
 // ])
 
 const addFilm = () => {
-  fetch('https://crudcrud.com/api/26f3d353736345a7b273edab4c74145a/movies', {
+  fetch('https://crudcrud.com/api/6a7cc7effb82486cb6ae8a8bab516462/movies', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

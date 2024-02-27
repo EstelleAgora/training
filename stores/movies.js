@@ -8,9 +8,9 @@ export const useMoviesStore = defineStore('moviesStore', {
         addMovie(movie) {
             this.movies.push(movie);
         },
-       async updateMovie(id, newMovie) {
-        console.log(id);
-            await fetch(`https://crudcrud.com/api/26f3d353736345a7b273edab4c74145a/movies/${id}`, {
+       async updateMovie(id, newMovie) {      
+        console.log(newMovie);
+            await fetch(`https://crudcrud.com/api/6a7cc7effb82486cb6ae8a8bab516462/movies/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -24,7 +24,7 @@ export const useMoviesStore = defineStore('moviesStore', {
             })},      
       
        async removeMovie(id) {
-            await fetch(`https://crudcrud.com/api/26f3d353736345a7b273edab4c74145a/movies/${id}`, {
+            await fetch(`https://crudcrud.com/api/6a7cc7effb82486cb6ae8a8bab516462/movies/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'
@@ -37,7 +37,7 @@ export const useMoviesStore = defineStore('moviesStore', {
         async fetchMovies() {
             this.loading = true;
             if(this.movies.length > 0) return;
-            const response = await fetch('https://crudcrud.com/api/26f3d353736345a7b273edab4c74145a/movies');
+            const response = await fetch('https://crudcrud.com/api/6a7cc7effb82486cb6ae8a8bab516462/movies');
             this.movies = await response.json();
             this.loading = false;
         }
