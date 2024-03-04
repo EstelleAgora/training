@@ -34,16 +34,15 @@ import Button from 'primevue/button'
 import Calendar from 'primevue/calendar'
 import { useMoviesStore } from '~/stores/movies'
 import {useRoute} from "vue-router";
-import { storeToRefs } from 'pinia';
+
 import { ref } from 'vue'
-    const store = useMoviesStore();
     const route = useRoute();
 
-    const {getMovieById} = storeToRefs(store);  
+    const {getMovieById, updateMovie} = useMoviesStore();
     // eslint-disable-next-line no-undef
 
     //Ask question
-    const film = getMovieById.value(route.params._id);
+    const film = getMovieById(route.params._id);
  
     const status = ref([
   'In production',
@@ -52,7 +51,7 @@ import { ref } from 'vue'
    'Cancelled'
 ])
     const submitForm = () => {   
-      store.updateMovie(route.params._id,  {name: film.name, director: film.director, description: film.description, date: film.date, status: film.status} ); 
+      updateMovie(route.params._id,  {name: film.name, director: film.director, description: film.description, date: film.date, status: film.status} ); 
       // eslint-disable-next-line no-undef
       navigateTo('/');
     };

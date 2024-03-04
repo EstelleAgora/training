@@ -65,7 +65,7 @@ const status = ref([
 // ])
 
 const addFilm = () => {
-  fetch('https://crudcrud.com/api/6a7cc7effb82486cb6ae8a8bab516462/movies', {
+  fetch('https://crudcrud.com/api/8da80d5b315146c99b6082116a9a2921/movies', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
